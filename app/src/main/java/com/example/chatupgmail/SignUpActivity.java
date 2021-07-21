@@ -50,12 +50,17 @@ public class SignUpActivity extends AppCompatActivity {
                         dialog.dismiss();
                         if (task.isSuccessful())
                         {
-                            Users user = new Users(binding.etUserName.getText().toString(),binding.etEmail.getText().toString(),
-                                    binding.etPassword.getText().toString());
-
-                            String id = task.getResult().getUser().getUid();
-                            database.getReference().child("Users").child(id).setValue(user);
+//                            Users user = new Users(binding.etUserName.getText().toString(),binding.etEmail.getText().toString(),
+//                                    binding.etPassword.getText().toString());
+//
+//                            String id = task.getResult().getUser().getUid();
+//                            database.getReference().child("Users").child(id).setValue(user);
                             Toast.makeText(SignUpActivity.this, "User Created Successfully", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(SignUpActivity.this,SetProfile.class);
+                            intent.putExtra("email",binding.etEmail.getText().toString());
+                            intent.putExtra("password",binding.etPassword.getText().toString());
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            startActivity(intent);
                         }
                         else{
                             Toast.makeText(SignUpActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
