@@ -38,13 +38,14 @@ public class MainActivity extends AppCompatActivity {
 
         switch (item.getItemId())
         {
-            case R.id.setting:
-                Toast.makeText(this,"Clicked", Toast.LENGTH_SHORT).show();
+            case R.id.profile:
+                Intent intent = new Intent(MainActivity.this,ShowProfile.class);
+                startActivity(intent);
                 break;
             case R.id.logout:
                 auth.signOut();
-                Intent intent = new Intent(MainActivity.this, SignInActivity.class);
-                startActivity(intent);
+                Intent intent1 = new Intent(MainActivity.this, SignInActivity.class);
+                startActivity(intent1);
                 break;
         }
 

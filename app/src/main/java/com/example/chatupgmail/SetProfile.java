@@ -103,7 +103,7 @@ public class SetProfile extends AppCompatActivity {
                 {
 
                     mprogressbarofsetprofile.setVisibility(View.VISIBLE);
-                    sendDataForNewUser();
+                    sendDataToRealTimeDatabase();
                     mprogressbarofsetprofile.setVisibility(View.INVISIBLE);
                     Intent intent=new Intent(SetProfile.this,MainActivity.class);
                     startActivity(intent);
@@ -122,12 +122,7 @@ public class SetProfile extends AppCompatActivity {
     }
 
 
-    private void sendDataForNewUser()
-    {
 
-        sendDataToRealTimeDatabase();
-
-    }
 
     private void sendDataToRealTimeDatabase()
     {
@@ -179,7 +174,7 @@ public class SetProfile extends AppCompatActivity {
                     @Override
                     public void onSuccess(Uri uri) {
                         ImageUriAcessToken=uri.toString();
-                        Toast.makeText(getApplicationContext(),"URI get sucess",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(),"URI get success",Toast.LENGTH_SHORT).show();
                         sendDataTocloudFirestore();
                     }
                 }).addOnFailureListener(new OnFailureListener() {

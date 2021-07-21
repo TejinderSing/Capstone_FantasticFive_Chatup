@@ -4,12 +4,13 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/chatup"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/chatup"
         android:supportsRtl="true"
         android:theme="@style/Theme.ChatUpGmail">
-        <activity android:name=".SetProfile"></activity>
+        <activity android:name=".ShowProfile"></activity>
+        <activity android:name=".SetProfile" />
         <activity android:name=".SignInActivity" />
         <activity android:name=".LauncherScreen">
             <intent-filter>
@@ -21,4 +22,5 @@
         <activity android:name=".SignUpActivity" />
         <activity android:name=".MainActivity" />
     </application>
+
 </manifest>
