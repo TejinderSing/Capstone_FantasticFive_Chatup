@@ -18,6 +18,8 @@ android {
         versionCode 1
         versionName "1.1"
 
+
+
         multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -63,11 +65,29 @@ dependencies {
     //for google sign in
     implementation 'com.google.android.gms:play-services-auth:19.0.0'
 
-    implementation 'com.hbb20:ccp:2.5.1'
+    //implementation 'com.hbb20:ccp:2.5.1'
 
     implementation 'com.squareup.picasso:picasso:2.71828'
 
+
+
+    //implementation 'com.firebaseui:firebase-ui-firestore:6.1.0'
+
     implementation 'com.android.support:multidex:1.0.3'
+
+    implementation 'com.google.firebase:firebase-core:16.0.8'
+
+   // implementation 'androidx.paging:paging-runtime:2.x.x'
+
+    //implementation 'com.firebaseui:firebase-ui-firestore:4.3.1'
+
+    implementation 'com.firebaseui:firebase-ui-firestore:7.2.0'
+
+    //implementation "androidx.legacy:legacy-support-v4:$X.Y.Z"
+
+    implementation "androidx.recyclerview:recyclerview:1.2.1"
+
+
 
 
 }
