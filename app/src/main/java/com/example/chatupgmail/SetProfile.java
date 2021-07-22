@@ -130,7 +130,7 @@ public class SetProfile extends AppCompatActivity {
 
         name=mgetusername.getText().toString().trim();
         FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
-        DatabaseReference databaseReference=firebaseDatabase.getReference(firebaseAuth.getUid());
+        DatabaseReference databaseReference=firebaseDatabase.getReference().child("Users").child(firebaseAuth.getUid());
 
         Users muserprofile=new Users(name,email,password,firebaseAuth.getUid());
         databaseReference.setValue(muserprofile);
@@ -205,18 +205,18 @@ public class SetProfile extends AppCompatActivity {
 
 
         DocumentReference documentReference=firebaseFirestore.collection("Users").document(firebaseAuth.getUid());
-        Map<String , Object> userdata=new HashMap<>();
+            Map<String , Object> userdata=new HashMap<>();
         userdata.put("name",name);
         userdata.put("image",ImageUriAcessToken);
         userdata.put("uid",firebaseAuth.getUid());
         userdata.put("status","Online");
 
         documentReference.set(userdata).addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void aVoid) {
-                Toast.makeText(getApplicationContext(),"Data on Cloud Firestore send success",Toast.LENGTH_SHORT).show();
+                @Override
+                public void onSuccess(Void aVoid) {
+                    Toast.makeText(getApplicationContext(),"Data on Cloud Firestore send success",Toast.LENGTH_SHORT).show();
 
-            }
+                }
         });
 
 
