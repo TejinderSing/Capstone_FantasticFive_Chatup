@@ -110,9 +110,20 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.logout:
+
+                DocumentReference documentReference = FirebaseFirestore.getInstance().collection("Users").document(FirebaseAuth.getInstance().getUid());
+                documentReference.update("status", "Offline").addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(getApplicationContext(), "Now User is Offline", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
                 auth.signOut();
                 Intent intent1 = new Intent(MainActivity.this, SignInActivity.class);
                 startActivity(intent1);
+
+                finish();
                 break;
         }
 
@@ -132,20 +143,7 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-        DocumentReference documentReference=firebaseFirestore.collection("Users").document(firebaseAuth.getUid());
-        documentReference.update("status","Offline").addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void aVoid) {
-                Toast.makeText(getApplicationContext(),"Now User is Offline",Toast.LENGTH_SHORT).show();
-            }
-        });
 
-
-
-    }
 
     @Override
     protected void onStart() {

@@ -209,7 +209,7 @@ public class SetProfile extends AppCompatActivity {
         userdata.put("name",name);
         userdata.put("image",ImageUriAcessToken);
         userdata.put("uid",firebaseAuth.getUid());
-        userdata.put("status","Online");
+        userdata.put("status","Offline");
 
         documentReference.set(userdata).addOnSuccessListener(new OnSuccessListener<Void>() {
                 @Override
