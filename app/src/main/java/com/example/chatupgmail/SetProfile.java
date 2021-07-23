@@ -1,5 +1,7 @@
 package com.example.chatupgmail;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -77,6 +79,18 @@ public class SetProfile extends AppCompatActivity {
         msaveprofile=findViewById(R.id.saveProfile);
         mprogressbarofsetprofile=findViewById(R.id.progressbarofsetProfile);
 
+
+
+        ActivityResultLauncher<Intent> startActivityForResult = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if (result.getResultCode() == AppCompatActivity.RESULT_OK && result.getResultCode() == PICK_IMAGE) {
+                        Intent data = result.getData();
+                        imagepath = data.getData();
+                        mgetuserimageinimageview.setImageURI(imagepath);
+                    }
+                }
+        );
 
         mgetuserimage.setOnClickListener(new View.OnClickListener() {
             @Override
