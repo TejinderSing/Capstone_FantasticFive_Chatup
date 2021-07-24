@@ -9,7 +9,8 @@
         android:roundIcon="@drawable/chatup"
         android:supportsRtl="true"
         android:theme="@style/Theme.ChatUpGmail">
-        <activity android:name=".ShowProfile"></activity>
+        <activity android:name=".Chatting"></activity>
+        <activity android:name=".ShowProfile" />
         <activity android:name=".SetProfile" />
         <activity android:name=".SignInActivity" />
         <activity android:name=".LauncherScreen">

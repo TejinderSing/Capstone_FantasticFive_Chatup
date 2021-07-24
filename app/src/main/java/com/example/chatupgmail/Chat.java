@@ -30,11 +30,11 @@ public class Chat extends Fragment {
     LinearLayoutManager linearLayoutManager;
     private FirebaseAuth firebaseAuth;
 
-    ImageView mimageviewofuser;
+    ImageView imageview;
 
-    FirestoreRecyclerAdapter<FirebaseModel,NoteViewHolder> chatAdapter;
+    FirestoreRecyclerAdapter<FirebaseModel,NoteViewHolder> listAdapter;
 
-    RecyclerView mrecyclerview;
+    RecyclerView recyclerview;
 
 
 
@@ -45,21 +45,21 @@ public class Chat extends Fragment {
 
         firebaseAuth=FirebaseAuth.getInstance();
         firebaseFirestore= FirebaseFirestore.getInstance();
-        mrecyclerview=v.findViewById(R.id.recyclerview);
+        recyclerview=v.findViewById(R.id.recyclerview);
 
 
         // Query query=firebaseFirestore.collection("Users");
         Query query=firebaseFirestore.collection("Users").whereNotEqualTo("uid",firebaseAuth.getUid());
         FirestoreRecyclerOptions<FirebaseModel> allusername=new FirestoreRecyclerOptions.Builder<FirebaseModel>().setQuery(query,FirebaseModel.class).build();
 
-        chatAdapter=new FirestoreRecyclerAdapter<FirebaseModel, NoteViewHolder>(allusername) {
+        listAdapter=new FirestoreRecyclerAdapter<FirebaseModel, NoteViewHolder>(allusername) {
             @Override
             protected void onBindViewHolder(@NonNull NoteViewHolder noteViewHolder, int i, @NonNull FirebaseModel firebasemodel) {
 
                 noteViewHolder.particularusername.setText(firebasemodel.getName());
                 String uri=firebasemodel.getImage();
 
-                Picasso.get().load(uri).into(mimageviewofuser);
+                Picasso.get().load(uri).into(imageview);
                 if(firebasemodel.getStatus().equals("Online"))
                 {
                     noteViewHolder.statusofuser.setText(firebasemodel.getStatus());
@@ -73,7 +73,11 @@ public class Chat extends Fragment {
                 noteViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Toast.makeText(getContext(),"Working on it",Toast.LENGTH_SHORT).show();
+                        Intent intent=new Intent(getActivity(),Chatting.class);
+                        intent.putExtra("name",firebasemodel.getName());
+                        intent.putExtra("receiveruid",firebasemodel.getUid());
+                        intent.putExtra("imageuri",firebasemodel.getImage());
+                        startActivity(intent);
                     }
                 });
 
@@ -91,11 +95,11 @@ public class Chat extends Fragment {
         };
 
 
-        mrecyclerview.setHasFixedSize(true);
+        recyclerview.setHasFixedSize(true);
         linearLayoutManager=new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
-        mrecyclerview.setLayoutManager(linearLayoutManager);
-        mrecyclerview.setAdapter(chatAdapter);
+        recyclerview.setLayoutManager(linearLayoutManager);
+        recyclerview.setAdapter(listAdapter);
 
 
         return v;
@@ -116,7 +120,7 @@ public class Chat extends Fragment {
             super(itemView);
             particularusername=itemView.findViewById(R.id.nameofuser);
             statusofuser=itemView.findViewById(R.id.statusofuser);
-            mimageviewofuser=itemView.findViewById(R.id.imageviewofuser);
+            imageview=itemView.findViewById(R.id.imageviewofuser);
 
 
 
@@ -127,15 +131,15 @@ public class Chat extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        chatAdapter.startListening();
+        listAdapter.startListening();
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        if(chatAdapter!=null)
+        if(listAdapter!=null)
         {
-            chatAdapter.stopListening();
+            listAdapter.stopListening();
         }
     }
 }
