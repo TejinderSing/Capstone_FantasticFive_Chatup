@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        //setSupportActionBar(toolBar);
+        setSupportActionBar(toolBar);
 
         auth = FirebaseAuth.getInstance();
         Drawable drawable= ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_baseline_more_vert_24);
