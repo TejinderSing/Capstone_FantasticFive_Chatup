@@ -88,6 +88,9 @@ dependencies {
     implementation "androidx.recyclerview:recyclerview:1.2.1"
 
 
+    implementation ('org.jitsi.react:jitsi-meet-sdk:2.+') { transitive = true }
+
+
 
 
 }

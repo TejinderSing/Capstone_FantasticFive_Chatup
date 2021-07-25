@@ -17,6 +17,11 @@ allprojects {
         google()
         mavenCentral()
          // Warning: this repository is going to shut down soon
+
+        jcenter()
+        maven {
+            url "https://github.com/jitsi/jitsi-maven-repository/raw/master/releases"
+        }
     }
 }
 
