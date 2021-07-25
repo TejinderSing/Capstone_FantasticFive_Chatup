@@ -50,10 +50,10 @@ public class MainActivity extends AppCompatActivity {
 
         tabLayout = findViewById(R.id.tablayout);
         chat = findViewById(R.id.chat);
-        call = findViewById(R.id.calls);
+//        call = findViewById(R.id.calls);
         viewPager = findViewById(R.id.fragmentcontainer);
 
-        toolBar = findViewById(R.id.toolbar);
+
 
 
 
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
 
         auth = FirebaseAuth.getInstance();
         Drawable drawable= ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_baseline_more_vert_24);
-        toolBar.setOverflowIcon(drawable);
+
 
 
         pagerAdapter=new PagerAdapter(getSupportFragmentManager(),tabLayout.getTabCount());
@@ -106,6 +106,12 @@ public class MainActivity extends AppCompatActivity {
         {
             case R.id.profile:
                 Intent intent=new Intent(MainActivity.this,ShowProfile.class);
+                startActivity(intent);
+                break;
+
+
+            case R.id.vidcall:
+                intent = new Intent(MainActivity.this,Call.class);
                 startActivity(intent);
                 break;
 

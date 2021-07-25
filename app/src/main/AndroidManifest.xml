@@ -5,7 +5,6 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/chatup"
-        android:label="@string/app_name"
         android:roundIcon="@drawable/chatup"
         android:supportsRtl="true"
         android:theme="@style/Theme.ChatUpGmail">
@@ -13,6 +12,7 @@
         <activity android:name=".ShowProfile" />
         <activity android:name=".SetProfile" />
         <activity android:name=".SignInActivity" />
+        <activity android:name=".Call" />
         <activity android:name=".LauncherScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

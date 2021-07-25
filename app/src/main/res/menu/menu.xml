@@ -5,6 +5,12 @@
         android:id="@+id/profile"
         android:title="Profile"
         />
+
+    <item
+        android:id="@+id/vidcall"
+        android:title="Video Call"
+        />
+
     <item
         android:id="@+id/logout"
         android:title="Log Out"
