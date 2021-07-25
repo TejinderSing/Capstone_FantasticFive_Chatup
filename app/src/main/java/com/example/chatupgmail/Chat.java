@@ -3,9 +3,13 @@ package com.example.chatupgmail;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,6 +18,7 @@ import com.example.chatupgmail.Models.FirebaseModel;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.squareup.picasso.Picasso;
@@ -36,6 +41,10 @@ public class Chat extends Fragment {
 
     RecyclerView recyclerview;
 
+    EditText searchbar;
+
+    String searching;
+
 
 
     @Nullable
@@ -46,9 +55,29 @@ public class Chat extends Fragment {
         firebaseAuth=FirebaseAuth.getInstance();
         firebaseFirestore= FirebaseFirestore.getInstance();
         recyclerview=v.findViewById(R.id.recyclerview);
+        searchbar = v.findViewById(R.id.search);
+
+        searchbar.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                searching += s;
+                Query query1=firebaseFirestore.collection("Users").whereNotEqualTo("uid",firebaseAuth.getUid()).whereArrayContains("email",searching);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 
 
-        // Query query=firebaseFirestore.collection("Users");
+
+
         Query query=firebaseFirestore.collection("Users").whereNotEqualTo("uid",firebaseAuth.getUid());
         FirestoreRecyclerOptions<FirebaseModel> allusername=new FirestoreRecyclerOptions.Builder<FirebaseModel>().setQuery(query,FirebaseModel.class).build();
 
