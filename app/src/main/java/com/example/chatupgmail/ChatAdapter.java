@@ -61,13 +61,6 @@ public class ChatAdapter extends RecyclerView.Adapter {
             viewHolder.timeofmessage.setText(messages.getCurrenttime());
         }
 
-
-
-
-
-
-
-
     }
 
 
