@@ -27,66 +27,66 @@ import static org.webrtc.ContextUtils.getApplicationContext;
 
 public class Call extends Fragment {
 
-
-    EditText shareCode;
-    Button joinBtn, shareBtn;
-    Activity activity = getActivity();
-    Context context;
-
-    public View onCreateView(LayoutInflater inflater,
-                             ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.chat, container, false);
-        shareCode = view.findViewById(R.id.codeBox);
-        joinBtn = view.findViewById(R.id.joinBtn);
-        shareBtn = view.findViewById(R.id.shareBtn);
-
-        URL serverURL;
-
-
-        try {
-            serverURL = new URL("https://meet.jit.si");
-            JitsiMeetConferenceOptions defaultOptions =
-                    new JitsiMeetConferenceOptions.Builder()
-                            .setServerURL(serverURL)
-                            .setWelcomePageEnabled(false)
-                            .build();
-            JitsiMeet.setDefaultConferenceOptions(defaultOptions);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-
-
-        joinBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                JitsiMeetConferenceOptions options = new JitsiMeetConferenceOptions.Builder()
-                        .setRoom(shareCode.getText().toString())
-                        .setWelcomePageEnabled(false)
-                        .build();
-
-//                JitsiMeetActivity.launch(Call.this, options);
-            }
-        });
-
-
-        shareBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String value = shareCode.getText().toString();
-                if (value.isEmpty()){
-                    Toast.makeText(activity,"Please write code to share",Toast.LENGTH_SHORT).show();
-                } else{
-//                    ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-//                    ClipData clip = ClipData.newPlainText("code", value);
-//                    clipboard.setPrimaryClip(clip);
-                }
-            }
-        });
-
-
-        return view;
-    }
+//
+//    EditText shareCode;
+//    Button joinBtn, shareBtn;
+//    Activity activity = getActivity();
+//    Context context;
+//
+//    public View onCreateView(LayoutInflater inflater,
+//                             ViewGroup container,
+//                             Bundle savedInstanceState) {
+//        View view = inflater.inflate(R.layout.chat, container, false);
+//        shareCode = view.findViewById(R.id.codeBox);
+//        joinBtn = view.findViewById(R.id.joinBtn);
+//        shareBtn = view.findViewById(R.id.shareBtn);
+//
+//        URL serverURL;
+//
+//
+//        try {
+//            serverURL = new URL("https://meet.jit.si");
+//            JitsiMeetConferenceOptions defaultOptions =
+//                    new JitsiMeetConferenceOptions.Builder()
+//                            .setServerURL(serverURL)
+//                            .setWelcomePageEnabled(false)
+//                            .build();
+//            JitsiMeet.setDefaultConferenceOptions(defaultOptions);
+//        } catch (MalformedURLException e) {
+//            e.printStackTrace();
+//        }
+//
+//
+//        joinBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                JitsiMeetConferenceOptions options = new JitsiMeetConferenceOptions.Builder()
+//                        .setRoom(shareCode.getText().toString())
+//                        .setWelcomePageEnabled(false)
+//                        .build();
+//
+////                JitsiMeetActivity.launch(Call.this, options);
+//            }
+//        });
+//
+//
+//        shareBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                String value = shareCode.getText().toString();
+//                if (value.isEmpty()){
+//                    Toast.makeText(activity,"Please write code to share",Toast.LENGTH_SHORT).show();
+//                } else{
+////                    ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+////                    ClipData clip = ClipData.newPlainText("code", value);
+////                    clipboard.setPrimaryClip(clip);
+//                }
+//            }
+//        });
+//
+//
+//        return view;
+//    }
 
 
 }
