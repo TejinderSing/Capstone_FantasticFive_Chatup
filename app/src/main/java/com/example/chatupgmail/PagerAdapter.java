@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.example.chatupgmail.Models.Stories;
+//import com.example.chatupgmail.Models.Stories;
 
 public class PagerAdapter extends FragmentPagerAdapter {
     int tabcount;
@@ -40,5 +40,8 @@ public class PagerAdapter extends FragmentPagerAdapter {
     @Override
     public int getCount() {
         return tabcount;
+    }
+
+    private class Stories extends Fragment {
     }
 }
