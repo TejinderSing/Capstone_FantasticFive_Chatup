@@ -123,7 +123,7 @@
         <ImageButton
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/ic_baseline_arrow_forward_ios_24"
+            android:src="@drawable/ic_launcher_background"
             android:padding="5dp"
             android:backgroundTint="@android:color/transparent"
             android:background="@android:color/transparent"
