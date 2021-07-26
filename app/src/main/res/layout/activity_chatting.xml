@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:layout_marginTop="0dp"
-        android:background="#075e54"
+        android:background="@color/teal_700"
         android:id="@+id/toolbarofspecificchat">
 
         <RelativeLayout
@@ -83,7 +83,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/getmessage"
-        android:id="@+id/recyclerviewofspecific"
+        android:id="@+id/recyclerviewofchatting"
         android:layout_below="@id/toolbarofspecificchat"
         android:padding="5dp">
 
@@ -123,7 +123,7 @@
         <ImageButton
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/common_google_signin_btn_icon_dark"
+            android:src="@drawable/ic_baseline_arrow_forward_ios_24"
             android:padding="5dp"
             android:backgroundTint="@android:color/transparent"
             android:background="@android:color/transparent"

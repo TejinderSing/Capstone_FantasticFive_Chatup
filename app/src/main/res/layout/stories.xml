@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/storybtnlatout">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Stories"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:id="@+id/addstorytext"
+            >
+
+
+        </TextView>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/addstorytext"
+            android:id="@+id/addStories"
+            android:src="@drawable/ic_baseline_add_a_photo_24"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@color/design_default_color_secondary">
+
+        </ImageButton>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:layout_below="@id/addStories"
+            android:background="@color/black">
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/storylist"
+        android:layout_below="@id/storybtnlatout"
+        tools:listitem="@layout/showstories">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+</RelativeLayout>

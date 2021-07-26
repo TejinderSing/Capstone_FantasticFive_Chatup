@@ -13,7 +13,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.example.chatupgmail.databinding.ActivityMainBinding;
+import com.example.chatupgmail.Adapter.PagerAdapter;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
 //        binding = ActivityMainBinding.inflate(getLayoutInflater());
 //        setContentView(binding.getRoot());
         setContentView(R.layout.activity_main);
-
+        toolBar = findViewById(R.id.toolbar);
         tabLayout = findViewById(R.id.tablayout);
         chat = findViewById(R.id.chat);
 //        call = findViewById(R.id.calls);
@@ -62,6 +62,8 @@ public class MainActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         Drawable drawable= ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_baseline_more_vert_24);
 
+        toolBar.setOverflowIcon(drawable);
+
 
 
         pagerAdapter=new PagerAdapter(getSupportFragmentManager(),tabLayout.getTabCount());
@@ -72,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
 
-                if(tab.getPosition()==0 || tab.getPosition()==1|| tab.getPosition()==2)
+                if(tab.getPosition()==0 || tab.getPosition()==1)
                 {
                     pagerAdapter.notifyDataSetChanged();
                 }

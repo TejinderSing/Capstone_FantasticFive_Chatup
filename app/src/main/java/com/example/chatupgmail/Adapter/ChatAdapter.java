@@ -1,12 +1,16 @@
-package com.example.chatupgmail;
+package com.example.chatupgmail.Adapter;
 
 import android.content.Context;
+import android.content.ReceiverCallNotAllowedException;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.chatupgmail.Models.Messages;
+import com.example.chatupgmail.R;
+import com.example.chatupgmail.databinding.RecevierBinding;
+import com.example.chatupgmail.databinding.SenderBinding;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
@@ -50,15 +54,15 @@ public class ChatAdapter extends RecyclerView.Adapter {
         if(holder.getClass()==SenderViewHolder.class)
         {
             SenderViewHolder viewHolder=(SenderViewHolder)holder;
-            viewHolder.textViewmessaage.setText(messages.getMessage());
+            viewHolder.binding.sendermessage.setText(messages.getMessage());
             System.out.println(messages.getMessage());
-            viewHolder.timeofmessage.setText(messages.getCurrenttime());
+            viewHolder.binding.timeofmessage.setText(messages.getCurrenttime());
         }
         else
         {
             RecieverViewHolder viewHolder=(RecieverViewHolder)holder;
-            viewHolder.textViewmessaage.setText(messages.getMessage());
-            viewHolder.timeofmessage.setText(messages.getCurrenttime());
+            viewHolder.binding.reciever.setText(messages.getMessage());
+            viewHolder.binding.timeofmessage.setText(messages.getCurrenttime());
         }
 
     }
@@ -92,29 +96,31 @@ public class ChatAdapter extends RecyclerView.Adapter {
 
     class SenderViewHolder extends RecyclerView.ViewHolder
     {
-
-        TextView textViewmessaage;
-        TextView timeofmessage;
+        SenderBinding binding;
+//        TextView textViewmessaage;
+//        TextView timeofmessage;
 
 
         public SenderViewHolder(@NonNull View itemView) {
             super(itemView);
-            textViewmessaage=itemView.findViewById(R.id.sendermessage);
-            timeofmessage=itemView.findViewById(R.id.timeofmessage);
+//            textViewmessaage=itemView.findViewById(R.id.sendermessage);
+//            timeofmessage=itemView.findViewById(R.id.timeofmessage);
+            binding = SenderBinding.bind(itemView);
         }
     }
 
     class RecieverViewHolder extends RecyclerView.ViewHolder
     {
-
-        TextView textViewmessaage;
-        TextView timeofmessage;
+        RecevierBinding binding;
+//        TextView textViewmessaage;
+//        TextView timeofmessage;
 
 
         public RecieverViewHolder(@NonNull View itemView) {
             super(itemView);
-            textViewmessaage=itemView.findViewById(R.id.sendermessage);
-            timeofmessage=itemView.findViewById(R.id.timeofmessage);
+//            textViewmessaage=itemView.findViewById(R.id.sendermessage);
+//            timeofmessage=itemView.findViewById(R.id.timeofmessage);
+            binding = RecevierBinding.bind(itemView);
         }
     }
 

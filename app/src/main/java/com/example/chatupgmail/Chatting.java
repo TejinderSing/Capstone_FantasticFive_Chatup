@@ -2,7 +2,6 @@ package com.example.chatupgmail;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -15,16 +14,19 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.chatupgmail.Adapter.ChatAdapter;
 import com.example.chatupgmail.Models.Messages;
+import com.example.chatupgmail.databinding.ActivityChattingBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -58,10 +60,14 @@ public class Chatting extends AppCompatActivity {
     ChatAdapter chatAdapter;
     ArrayList<Messages> messagesArrayList;
 
+    ActivityChattingBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chatting);
+
+        binding = ActivityChattingBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
 
         typingspace=findViewById(R.id.getmessage);
@@ -73,14 +79,16 @@ public class Chatting extends AppCompatActivity {
 
         messagesArrayList=new ArrayList<>();
 
-        messagerecyclerview = findViewById(R.id.recyclerviewofspecific);
+        //messagerecyclerview = findViewById(R.id.recyclerviewofspecific);
 
 
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this);
         linearLayoutManager.setStackFromEnd(true);
-        messagerecyclerview.setLayoutManager(linearLayoutManager);
+        //messagerecyclerview.setLayoutManager(linearLayoutManager);
         chatAdapter=new ChatAdapter(Chatting.this,messagesArrayList);
-        messagerecyclerview.setAdapter(chatAdapter);
+        binding.recyclerviewofchatting.setLayoutManager(linearLayoutManager);
+        binding.recyclerviewofchatting.setAdapter(chatAdapter);
+        //messagerecyclerview.setAdapter(chatAdapter);
 
 
 
@@ -114,11 +122,28 @@ public class Chatting extends AppCompatActivity {
 
 
 
-        DatabaseReference databaseReference=firebaseDatabase.getReference().child("chats").child(senderroom).child("messages");
+//        DatabaseReference databaseReference=firebaseDatabase.getReference().child("chats").child(senderroom).child("messages");
+//        chatAdapter=new ChatAdapter(Chatting.this,messagesArrayList);
+//        databaseReference.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                messagesArrayList.clear();
+//                for(DataSnapshot snapshot1:snapshot.getChildren())
+//                {
+//                    Messages messages=snapshot1.getValue(Messages.class);
+//                    messagesArrayList.add(messages);
+//                }
+//                chatAdapter.notifyDataSetChanged();
+//            }
+//        @Override
+//        public void onCancelled(@NonNull DatabaseError error) {
+//
+//        }
+//    });
         chatAdapter=new ChatAdapter(Chatting.this,messagesArrayList);
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        firebaseDatabase.getReference().child("chats").child(senderroom).child("messages").addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 messagesArrayList.clear();
                 for(DataSnapshot snapshot1:snapshot.getChildren())
                 {
@@ -129,10 +154,12 @@ public class Chatting extends AppCompatActivity {
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
 
             }
         });
+
+
 
 
 
@@ -195,7 +222,7 @@ public class Chatting extends AppCompatActivity {
                         }
                     });
 
-                    typingspace.setText(null);
+                    typingspace.setText("");
 
 
 

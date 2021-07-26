@@ -57,23 +57,23 @@ public class Chat extends Fragment {
         recyclerview=v.findViewById(R.id.recyclerview);
         searchbar = v.findViewById(R.id.search);
 
-        searchbar.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                searching += s;
-                Query query1=firebaseFirestore.collection("Users").whereNotEqualTo("uid",firebaseAuth.getUid()).whereArrayContains("email",searching);
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
+//        searchbar.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//                searching += s;
+//                Query query1=firebaseFirestore.collection("Users").whereNotEqualTo("uid",firebaseAuth.getUid()).whereArrayContains("email",searching);
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable s) {
+//
+//            }
+//        });
 
 
 

@@ -67,32 +67,38 @@ dependencies {
 
     //implementation 'com.hbb20:ccp:2.5.1'
 
+    //to load images in image view
     implementation 'com.squareup.picasso:picasso:2.71828'
 
 
 
-    //implementation 'com.firebaseui:firebase-ui-firestore:6.1.0'
 
     implementation 'com.android.support:multidex:1.0.3'
 
     implementation 'com.google.firebase:firebase-core:16.0.8'
 
-   // implementation 'androidx.paging:paging-runtime:2.x.x'
-
-    //implementation 'com.firebaseui:firebase-ui-firestore:4.3.1'
-
+    //For firebase ui functions
     implementation 'com.firebaseui:firebase-ui-firestore:7.2.0'
 
-    //implementation "androidx.legacy:legacy-support-v4:$X.Y.Z"
 
     implementation "androidx.recyclerview:recyclerview:1.2.1"
 
+    //For video call
     implementation ('org.jitsi.react:jitsi-meet-sdk:2.+') { transitive = true }
 
 
-    implementation ('org.jitsi.react:jitsi-meet-sdk:2.+') { transitive = true }
+    //implementation ('org.jitsi.react:jitsi-meet-sdk:2.+') { transitive = true }
 
+
+    //For view stories
+    implementation 'com.github.OMARIHAMZA:StoryView:1.0.2-alpha'
+    //For images also
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
 
 
 
 }
+
+
+
+

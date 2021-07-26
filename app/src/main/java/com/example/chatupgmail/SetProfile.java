@@ -35,7 +35,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SetProfile extends AppCompatActivity {
+public class    SetProfile extends AppCompatActivity {
 
     private CardView mgetuserimage;
     private ImageView mgetuserimageinimageview;
